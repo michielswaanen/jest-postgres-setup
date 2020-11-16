@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  server:
+    restart: always
+    build: .
+    ports:
+      - '8080:8080'
+    environment:
+      PORT: 8080
+  database:
+    image: postgres:alpine
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: db_name

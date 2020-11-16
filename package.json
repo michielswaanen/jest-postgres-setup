@@ -1,0 +1,43 @@
+{
+  "name": "jest-postgres-setup",
+  "version": "1.0.0",
+  "description": "Jest unit testing that works with postgres",
+  "main": "index.ts",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "ts-node-dev --poll src/index.ts",
+    "test:database:up": "docker-compose -f ./test/docker-compose.yml up -d",
+    "test:database:down": "docker-compose -f ./test/docker-compose.yml down",
+    "test": "npm run test:database:up && jest --watchAll --no-cache --runInBand --verbose && npm run test:database:down",
+    "test:ci": "npm run test:database:up && jest && npm run test:database:down"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MichielS-1848709/jest-postgres-setup.git"
+  },
+  "author": "Michiel Swaanen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MichielS-1848709/jest-postgres-setup/issues"
+  },
+  "homepage": "https://github.com/MichielS-1848709/jest-postgres-setup#readme",
+  "dependencies": {
+    "@types/node": "^14.14.7",
+    "express": "^4.17.1",
+    "pg": "^8.5.1",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.29"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.9",
+    "@types/jest": "^26.0.15",
+    "@types/supertest": "^2.0.10",
+    "jest": "^26.6.3",
+    "supertest": "^6.0.1",
+    "ts-jest": "^26.4.4",
+    "ts-node-dev": "^1.0.0",
+    "typescript": "^4.0.5"
+  }
+}
